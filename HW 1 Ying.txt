@@ -1,0 +1,183 @@
+//CS m10B Homework 1 
+//Programmer - Kevin Ying
+//Budget Checker - Prompts user for budget expenditure, then compares to outline to determine over or under budget.
+
+#include <iostream>
+using namespace std;
+
+struct Budget  //Budget structure declaration
+{
+	float Housing, Utility, Household, Transport, Food, Medical, Insurance, Entertainment, Clothing, Misc;
+
+
+};
+//Monthly budget guidelines held using const
+const Budget monthlyBudget = { 500.0, 150.0, 65.0, 50.0, 250.00, 30.0, 100.0, 150.0, 75.0, 50.0 };
+
+//Function Prototypes
+void getActualBudget();
+void budgetCheck(Budget aBudget, Budget mBudget);
+
+int main()
+{
+
+	getActualBudget();
+	return 0;
+}
+
+void getActualBudget()  //Prompts user for individual budget, adds those to structure members, then calls comparison function "budgetCheck"
+{
+	Budget actualBudget;
+	cout << "How much did you spend on Housing?" << endl;
+	cin >> actualBudget.Housing;
+
+	cout << "How much did you spend on Utilities?" << endl;
+	cin >> actualBudget.Utility;
+
+	cout << "How much did you spend on Household expenses?" << endl;
+	cin >> actualBudget.Household;
+
+	cout << "How much did you spend on Transportation?" << endl;
+	cin >> actualBudget.Transport;
+
+	cout << "How much did you spend on Food?" << endl;
+	cin >> actualBudget.Food;
+
+	cout << "How much did you spend on Medical expenses?" << endl;
+	cin >> actualBudget.Medical;
+
+	cout << "How much did you spend on Insurance?" << endl;
+	cin >> actualBudget.Insurance;
+
+	cout << "How much did you spend on Entertainment?" << endl;
+	cin >> actualBudget.Entertainment;
+
+	cout << "How much did you spend on Clothing?" << endl;
+	cin >> actualBudget.Clothing;
+
+	cout << "How much did you spend on Miscellaneous expenses?" << endl;
+	cin >> actualBudget.Misc;
+
+	budgetCheck(monthlyBudget, actualBudget);
+}
+
+void budgetCheck(Budget mBudget, Budget aBudget)  //Budget comparison function
+{
+	float over = 0.0;  //Accumulator variables for over/under budget
+	float under = 0.0;
+
+	if (aBudget.Housing > mBudget.Housing)
+	{
+		cout << "Your Housing spending is " << (aBudget.Housing - mBudget.Housing) << " over budget!" << endl;
+		over += (aBudget.Housing - mBudget.Housing);
+	}
+	else
+	{
+		cout << "Your Housing spending is " << (mBudget.Housing - aBudget.Housing) << " under budget." << endl;
+		under += (mBudget.Housing - aBudget.Housing);
+	}
+	if (aBudget.Utility > mBudget.Utility)
+	{
+		cout << "Your Utilities spending is " << (aBudget.Utility - mBudget.Utility) << " over budget!" << endl;
+		over += (aBudget.Utility - mBudget.Utility);
+	}
+	else
+	{
+		cout << "Your Utilities spending is " << (mBudget.Utility - aBudget.Utility) << " under budget." << endl;
+		under += (mBudget.Utility - aBudget.Utility);
+	}
+
+	if (aBudget.Household > mBudget.Household)
+	{
+		cout << "Your Household spending is " << (aBudget.Household - mBudget.Household) << " over budget!" << endl;
+		over += (aBudget.Household - mBudget.Household);
+	}
+	else
+	{
+		cout << "Your Household spending is " << (mBudget.Household - aBudget.Household) << " under budget." << endl;
+		under += (mBudget.Household - aBudget.Household);
+	}
+
+	if (aBudget.Transport > mBudget.Transport)
+	{
+		cout << "Your Transportation spending is " << (aBudget.Transport - mBudget.Transport) << " over budget!" << endl;
+		over += (aBudget.Transport - mBudget.Transport);
+	}
+	else
+	{
+		cout << "Your Transportation spending is " << (mBudget.Transport - aBudget.Transport) << " under budget." << endl;
+		under += (mBudget.Transport - aBudget.Transport);
+	}
+
+	if (aBudget.Food > mBudget.Food)
+	{
+		cout << "Your Food spending is  " << (aBudget.Food - mBudget.Food) << " over budget!" << endl;
+		over += (aBudget.Food - mBudget.Food);
+	}
+	else
+	{
+		cout << "Your Food spending is " << (mBudget.Food - aBudget.Food) << " under budget." << endl;
+		under += (mBudget.Food - aBudget.Food);
+	}
+
+	if (aBudget.Medical > mBudget.Medical)
+	{
+		cout << "Your Medical spending is " << (aBudget.Medical - mBudget.Medical) << " over budget!" << endl;
+		over += (aBudget.Medical - mBudget.Medical);
+	}
+	else
+	{
+		cout << "Your Medical spending is " << (mBudget.Medical - aBudget.Medical) << " under budget." << endl;
+		under += (mBudget.Medical - aBudget.Medical);
+	}
+
+	if (aBudget.Insurance > mBudget.Insurance)
+	{
+		cout << "Your Insurance spending is " << (aBudget.Insurance - mBudget.Insurance) << " over budget!" << endl;
+		over += (aBudget.Insurance - mBudget.Insurance);
+	}
+	else
+	{
+		cout << "Your Insuranace spending is " << (mBudget.Insurance - aBudget.Insurance) << " under budget." << endl;
+		under += (mBudget.Insurance - aBudget.Insurance);
+	}
+
+	if (aBudget.Entertainment > mBudget.Entertainment)
+	{
+		cout << "Your Entertainment spending is " << (aBudget.Entertainment - mBudget.Entertainment) << " over budget!" << endl;
+		over += (aBudget.Entertainment - mBudget.Entertainment);
+	}
+	else
+	{
+		cout << "Your Entertainment spending is " << (mBudget.Entertainment - aBudget.Entertainment) << " under budget." << endl;
+		under += (mBudget.Entertainment - aBudget.Entertainment);
+	}
+
+	if (aBudget.Clothing > mBudget.Clothing)
+	{
+		cout << "Your Clothing spending is " << (aBudget.Clothing - mBudget.Clothing) << " over budget!" << endl;
+		over += (aBudget.Clothing - mBudget.Clothing);
+	}
+	else
+	{
+		cout << "Your Clothing spending is " << (mBudget.Clothing - aBudget.Clothing) << " under budget." << endl;
+		under += (mBudget.Clothing - aBudget.Clothing);
+	}
+
+	if (aBudget.Misc > mBudget.Misc)
+	{
+		cout << "Your Miscellaneous spending is " << (aBudget.Misc - mBudget.Misc) << " over budget!" << endl;
+		over += (aBudget.Misc - mBudget.Misc);
+	}
+	else
+	{
+		cout << "Your Miscellaneous spending is " << (mBudget.Misc - aBudget.Misc) << " under budget." << endl;
+		under += (mBudget.Misc - aBudget.Misc);
+	}
+
+	if (over - under > 0)
+		cout << "You are " << over - under << " dollars over budget!" << endl;
+	else
+		cout << "You are " << under - over << " within budget!" << endl;
+
+}

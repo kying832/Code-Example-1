@@ -1,0 +1,127 @@
+//CS M10B Homework 3
+//Object-Oriented Mortgage Calculator
+//Finds Monthly Mortgage payment using classes, and shows payment progression.
+//Programmer - Kevin Ying
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+class Mortgage
+{
+    private:
+        double rate;
+        double principal;
+        double term;
+        
+    public:
+    
+            //Mutator functions
+        void setRate(double r)
+        {
+            rate = r / 1200.0;
+            
+        }
+        void setPrincipal(double p)
+        {
+            principal = p;
+        }
+        void setTerm(double t)
+        {
+            term = t * 12;
+        }
+            
+            //Accessor functions
+        
+        double getRate() const
+        {
+            return rate * 1200.0;
+        }
+        double getPrincipal() const
+        {
+            return principal;
+        }
+        double getTerm() const
+        {
+            return term / 12;
+        }
+        
+        double findPayment()
+        {
+            return (principal * rate) / (1.0 - pow(rate + 1, -term));
+        }
+    
+    
+    
+    
+};
+
+int main()
+{
+    double r = 0.0;  //variables to hold value before transfer to class
+    double p = 0.0; 
+    double t = 0.0;
+    
+    Mortgage mort1; //declare instance of class Mortgage
+    
+    cout << "Let's calculate your monthly mortgage payment." << endl;
+    cout << "What is the rate of your loan?" << endl;
+    cin >> r;
+    
+    while(r <= 0.0) //input validation
+    {
+        cout << "That is not a valid input.  Please enter a valid rate." << endl;
+        cin >> r;
+    }
+    
+    cout << "What is the principal of your loan?" << endl;
+    cin >> p;
+    
+    while (p <=0.0 ) //input validation
+    {
+        cout << "That is not a valid input.  Please enter a valid principal." << endl;
+        cin >> p;
+    }
+    
+    cout << "What is the term of your loan?" << endl;
+    cin >> t;
+    
+    while (t <= 0.0) //input validation
+    {
+        cout << "That is not a valid input.  Please enter a valid term." << endl;
+        cin >> t;
+    }
+    
+        //Use mutators to change private class variables.
+    mort1.setRate(r);
+    mort1.setPrincipal(p);
+    mort1.setTerm(t);
+        
+        //Print results using accessor class functions.
+    cout << "For a mortgage with rate " << mort1.getRate() << " percent, principal " << mort1.getPrincipal() << " dollars and term " << mort1.getTerm() << " years," << endl;
+    cout << "you will pay " << fixed << setprecision(2) << mort1.findPayment() << " dollars per month." << endl << endl;
+    
+        //Printing loop for payment progression
+        
+    double interestPaid = 0.0;
+    double principalPaid = 0.0;
+    double balance = mort1.getPrincipal();
+    
+    
+    for(int i = 0; i < (mort1.getTerm()*12/20) ; i++)
+    {
+        for(int j = 0; j <20; j++)
+        {
+            interestPaid = balance * mort1.getRate() / 1200.0;
+            principalPaid = mort1.findPayment() - interestPaid;
+            balance = balance - principalPaid;
+            cout << "Your paid interest is $" << interestPaid << endl;
+            cout << "Your loan balance is $" << balance << endl; 
+        }
+    
+        cin.get();
+    }
+    
+    return 0;
+}
